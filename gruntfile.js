@@ -1,10 +1,10 @@
 module.exports = function(grunt) {
 
-    // 1. All configuration goes here 
+    // 1. All configuration goes here
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
         //concatenate js
-        concat: {   
+        concat: {
             dist: {
                 src: [
                     'js/libs/*.js', // Library JS
@@ -23,12 +23,12 @@ module.exports = function(grunt) {
         sass: {
             dist: {
                 options: {
-                    style: 'compressed'
+                    style: 'expanded'
                 },
                 files: {
                     'css/build/global.css': 'css/sass/global.scss'
                 }
-            } 
+            }
         },
         postcss: {
             options: {
@@ -41,6 +41,13 @@ module.exports = function(grunt) {
                 src: 'css/build/global.css'
             }
         },
+        csscomb: {
+            foo: {
+                 files: {
+                     'css/build/global.css': ['css/build/global.css']
+                 }
+            }
+         },
         watch: {
             scripts: {
                 files: ['js/site/*.js'],
@@ -51,7 +58,7 @@ module.exports = function(grunt) {
             },
             css: {
                 files: ['css/sass/*.scss'],
-                tasks: ['sass','postcss'],
+                tasks: ['sass','postcss','csscomb'],
                 options: {
                     spawn: false,
                 }
@@ -65,6 +72,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-postcss');
+    grunt.loadNpmTasks('grunt-csscomb');
     grunt.loadNpmTasks('grunt-contrib-watch');
 
     // 4. Where we tell Grunt what to do when we type "grunt" into the terminal.
