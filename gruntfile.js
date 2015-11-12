@@ -3,6 +3,38 @@ module.exports = function(grunt) {
     // 1. All configuration goes here
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
+
+responsive_images: {
+  half: {
+    options: {
+      engine: 'im',
+      sizes: [
+        {
+          name: "default",
+          rename: false,
+          width: "50%",
+          quality: 70
+        },
+
+        {
+          name: "retina",
+          rename: false,
+          suffix: "_x2",
+          width: "100%",
+          quality: 70
+        }
+
+      ]
+    },
+
+    files: [{
+      expand: true,
+      src: ['*.{gif,jpg,png}'],
+      cwd: 'img/source/resize/half/',
+      dest: 'img/build/'
+    }]
+  }
+},
         //concatenate js
         concat: {
             dist: {
@@ -84,7 +116,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-csscomb');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-connect');
-
+  grunt.loadNpmTasks('grunt-responsive-images');
     // 4. Where we tell Grunt what to do when we type "grunt" into the terminal.
     grunt.registerTask('default', ['concat', 'uglify']);
 
