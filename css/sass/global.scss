@@ -1,0 +1,204 @@
+
+@import "utils/reset";
+@import "utils/_helpers";
+
+@import "base/_variables";
+@import "base/_typography";
+
+
+html{
+    background-color: #e1e1e1;
+    min-height: 100%;
+    display: flex;
+    -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+            flex-direction: column;
+}
+body {
+  display: flex;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 $unit*3;
+  flex: 1 1 auto;
+}
+
+//putting all rules here for now as page is simple enough to not pull into separate scss files
+.site-header {
+  display: flex;
+  padding: $unitRem*2 0;
+  border-bottom: $unit/2 solid $c-1;
+  margin-bottom: $unit*2;
+  -webkit-align-items: center;
+          align-items: center;
+
+  .site-logo{
+    $thisSize: $unitRem*10;
+    flex: 0 1 auto;
+    width: $thisSize;
+    height: $thisSize;
+    border-radius: 50%;
+    background-image: url("../../img/build/logo-joke.jpg");
+    @include retina{
+      background-image: url("../../img/build/logo-joke_x2.jpg");
+    }
+    -webkit-background-size: $thisSize;
+         -o-background-size: $thisSize;
+            background-size: $thisSize;
+    background-position: 0 0;
+
+    //using animation with 'steps' easing to create animated-gif effect using a jpg:
+    @at-root{
+      @keyframes logoJoke{
+        0%{
+          background-position: 0 0;
+        }
+        100%{
+          background-position: 0 100%;
+        }
+      }
+    }
+    animation: logoJoke 2s steps(5) infinite;
+  }
+}
+
+.site-heading {
+  flex: 10 1 auto;
+  order:1;
+  text-transform: uppercase;
+  text-align: right;
+  display: flex;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+
+  &-name {
+    font-size: 3em;
+    font-weight: 300;
+    line-height: 1.2;
+    color: $c-1;
+  }
+  &-title{
+    font-weight: 600;
+  }
+}
+
+.hero {
+  margin-bottom: $unit*2;
+}
+
+.hero-image {
+  max-width: 100%;
+}
+
+.featured-work {
+  flex: 1 0 auto;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+  -webkit-align-content: flex-start;
+          align-content: flex-start;
+  margin: 0 #{-$unit} $unit*2;
+
+  h2{
+    width: 100%;
+    @include sectionHeading;
+    margin: $unit;
+  }
+}
+
+.featured-project{
+  &-link{
+    flex: 1 1 auto;
+    width: calc( 33.33% - #{$unit*2});
+    min-width: 250px;
+    display: flex;
+    -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+            flex-direction: column;
+
+    margin: $unit;
+    background: #fff;
+    border-radius: 2px;
+    box-shadow: 0 2px 3px 0 rgba(0,0,0,0.3);
+    transition: box-shadow 0.2s;
+    &:hover{
+      box-shadow: 0 5px 10px 0 rgba(0,0,0,0.4);
+    }
+  }
+  &-title{
+    @include itemHeading;
+    padding: $unit;
+  }
+  &-one-liner{
+    padding: 0 $unit;
+    flex: 1 1 auto;
+  }
+  &-url{
+    font-size: 12px;
+    margin: $unit;
+    padding: $unit $unit $unit $unit*4.5;
+    background-color: rgba($c-2,0.5);
+    color: #555;
+    position: relative;
+    &:before{
+      position: absolute;
+      display: block;
+      content:'';
+      width: $unit*2;
+      height: 100%;
+      background: url("../../img/build/icon-external-link.svg") no-repeat 50%;
+      -webkit-background-size: contain;
+           -o-background-size: contain;
+              background-size: contain;
+      top: 0;
+      left: $unit;
+    }
+  }
+  &-thumbnail{
+    order:-1;
+    width: 100%;
+  }
+
+}
+
+.site-footer{
+  padding: $unit*2 0;
+  h2{
+    @include sectionHeading;
+    margin-bottom: $unit*2;
+  }
+  ul{
+    display: flex;
+    margin-bottom: $unit*2;
+  }
+  li{
+        flex: 1 1 auto;
+  }
+  .footer-link{
+    font-size: 12px;
+    margin-right: $unit;
+    padding: $unit $unit $unit $unit*4.5;
+    background-color: rgba($c-2,0.5);
+    color: #555;
+    position: relative;
+    display: block;
+
+    &:before{
+      position: absolute;
+      display: block;
+      content:'';
+      width: $unit*2;
+      height: 100%;
+      background: url("../../img/build/icon-external-link.svg") no-repeat 50%;
+      -webkit-background-size: contain;
+           -o-background-size: contain;
+              background-size: contain;
+      top: 0;
+      left: $unit;
+    }
+  }
+}

@@ -1,0 +1,10 @@
+//color variables:
+$c-1: #f8981c;
+$c-2: #bcbcbc;
+$c-3: #676857;
+
+//use $unit for sizing when keeping same even if root font-size changes:
+$unit: 8px;
+
+//use $unitRem for sizing when it should be based on root font-size:
+$unitRem: 0.5rem;
