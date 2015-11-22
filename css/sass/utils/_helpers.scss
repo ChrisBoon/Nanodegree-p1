@@ -7,3 +7,17 @@
       @content;
   }
 }
+
+@mixin media-small(){
+  @media
+  screen and (max-width: 500px) {
+      @content;
+  }
+}
+
+@mixin media-crazysmall(){
+  @media
+  screen and (max-width: 300px) {
+      @content;
+  }
+}
