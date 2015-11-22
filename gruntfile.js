@@ -4,37 +4,37 @@ module.exports = function(grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
 
-responsive_images: {
-  half: {
-    options: {
-      engine: 'im',
-      sizes: [
-        {
-          name: "default",
-          rename: false,
-          width: "50%",
-          quality: 70
+        responsive_images: {
+          half: {
+            options: {
+              engine: 'im',
+              sizes: [
+                {
+                  name: "default",
+                  rename: false,
+                  width: "50%",
+                  quality: 70
+                },
+
+                {
+                  name: "retina",
+                  rename: false,
+                  suffix: "_x2",
+                  width: "100%",
+                  quality: 70
+                }
+
+              ]
+            },
+
+            files: [{
+              expand: true,
+              src: ['*.{gif,jpg,png}'],
+              cwd: 'img/source/resize/half/',
+              dest: 'build/img/'
+            }]
+          }
         },
-
-        {
-          name: "retina",
-          rename: false,
-          suffix: "_x2",
-          width: "100%",
-          quality: 70
-        }
-
-      ]
-    },
-
-    files: [{
-      expand: true,
-      src: ['*.{gif,jpg,png}'],
-      cwd: 'img/source/resize/half/',
-      dest: 'build/img/'
-    }]
-  }
-},
         //concatenate js
         concat: {
             dist: {
@@ -81,6 +81,13 @@ responsive_images: {
             }
         },
         copy: {
+            img: {
+                expand: true,
+                src: 'img/source/dont-resize/*',
+                dest: 'build/img/',
+                flatten: true,
+                filter: 'isFile'
+            },
             build: {
                 src: '*.html',
                 dest: 'build/',
@@ -162,6 +169,11 @@ responsive_images: {
 
     grunt.registerTask('dist', [
         'copy:dist'
+    ]);
+
+    grunt.registerTask('images', [
+        'copy:img',
+        'responsive_images'
     ]);
 
 };

@@ -150,32 +150,34 @@ html {
 }
 
 html {
-  background-color: #e1e1e1;
-  min-height: 100%;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
+  height: 100%;
 }
 
 body {
+  height: 100%;
+  background-color: #e1e1e1;
+}
+
+.page-container {
+  height: 100%;
+  max-width: 960px;
+  padding: 0 24px;
+  margin: 0 auto;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  max-width: 960px;
-  margin: 0 auto;
-  padding: 0 24px;
   -webkit-flex: 1 1 auto;
   -ms-flex: 1 1 auto;
   flex: 1 1 auto;
 }
 
 .site-header {
+  -webkit-flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
@@ -200,7 +202,7 @@ body {
   width: 5rem;
   height: 5rem;
   border-radius: 50%;
-  background-image: url(../../img/build/logo-joke.jpg);
+  background-image: url(../img/logo-joke.jpg);
   background-size: 100%;
   background-position: 0 0;
   -webkit-animation: logoJoke 2s steps(5) infinite;
@@ -214,7 +216,7 @@ body {
 }
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
   .site-header .site-logo {
-    background-image: url(../../img/build/logo-joke_x2.jpg);
+    background-image: url(../img/logo-joke_x2.jpg);
   }
 }
 @-webkit-keyframes logoJoke {
@@ -271,6 +273,9 @@ body {
 
 .hero {
   margin-bottom: 16px;
+  -webkit-flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
 }
 
 .hero-image {
@@ -284,13 +289,18 @@ body {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  margin: 0 -8px 16px;
+}
+.featured-work-items {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-  -webkit-align-content: flex-start;
-  -ms-flex-line-pack: start;
-  align-content: flex-start;
-  margin: 0 -8px 16px;
 }
 .featured-work h2 {
   width: 100%;
@@ -301,10 +311,10 @@ body {
 }
 
 .featured-project-link {
-  -webkit-flex: 1 1 auto;
-  -ms-flex: 1 1 auto;
-  flex: 1 1 auto;
-  width: calc( 33.33% - 16px);
+  -webkit-flex: 1 1 250px;
+  -ms-flex: 1 1 250px;
+  flex: 1 1 250px;
+  width: 30%;
   min-width: 250px;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -312,11 +322,7 @@ body {
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  margin: 8px;
-  background: #fff;
-  border-radius: 2px;
-  box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.3);
-  transition: box-shadow 0.2s;
+  padding: 8px;
 }
 @media screen and (max-width: 500px) {
   .featured-project-link {
@@ -324,7 +330,22 @@ body {
     width: 100%;
   }
 }
-.featured-project-link:hover {
+.featured-project-link .card {
+  -webkit-flex: 1 0 auto;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  border-radius: 2px;
+  box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.3);
+  background: #fff;
+  transition: box-shadow 0.2s;
+}
+.featured-project-link .card:hover {
   box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.4);
 }
 .featured-project-title {
@@ -358,7 +379,7 @@ body {
   content: "";
   width: 16px;
   height: 100%;
-  background: url(../../img/build/icon-external-link.svg) no-repeat 50%;
+  background: url(../img/icon-external-link.svg) no-repeat 50%;
   background-size: contain;
   top: 0;
   left: 8px;
@@ -379,6 +400,9 @@ body {
 }
 
 .site-footer {
+  -webkit-flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
   padding: 16px 0;
 }
 .site-footer h2 {
@@ -431,7 +455,7 @@ body {
   content: "";
   width: 16px;
   height: 100%;
-  background: url(../../img/build/icon-external-link.svg) no-repeat 50%;
+  background: url(../img/icon-external-link.svg) no-repeat 50%;
   background-size: contain;
   top: 0;
   left: 8px;

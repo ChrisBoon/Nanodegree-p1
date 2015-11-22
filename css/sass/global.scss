@@ -9,26 +9,28 @@
 
 //---scaffold
 html{
-    background-color: #e1e1e1;
-    min-height: 100%;
-    display: flex;
-    -webkit-flex-direction: column;
-        -ms-flex-direction: column;
-            flex-direction: column;
+  height: 100%;
 }
 body {
+  height: 100%;
+  background-color: #e1e1e1;
+}
+
+.page-container{
+  height: 100%;
+  max-width: 960px;
+  padding: 0 $unit*3;
+  margin: 0 auto;
   display: flex;
   -webkit-flex-direction: column;
       -ms-flex-direction: column;
           flex-direction: column;
-  max-width: 960px;
-  margin: 0 auto;
-  padding: 0 $unit*3;
   flex: 1 1 auto;
 }
 
 //---header
 .site-header {
+  flex: 0 0 auto;
   display: flex;
   @include media-crazysmall{
     -webkit-flex-direction: column;
@@ -52,9 +54,9 @@ body {
     height: $thisSize*0.8;
     }
     border-radius: 50%;
-    background-image: url(../../img/build/logo-joke.jpg);
+    background-image: url(../img/logo-joke.jpg);
     @include retina{
-      background-image: url(../../img/build/logo-joke_x2.jpg);
+      background-image: url(../img/logo-joke_x2.jpg);
     }
     background-size: 100%;
     background-position: 0 0;
@@ -104,6 +106,7 @@ body {
 //---Hero
 .hero {
   margin-bottom: $unit*2;
+  flex: 0 0 auto;
 }
 
 .hero-image {
@@ -114,13 +117,16 @@ body {
 .featured-work {
   flex: 1 0 auto;
   display: flex;
-  -webkit-flex-wrap: wrap;
-      -ms-flex-wrap: wrap;
-          flex-wrap: wrap;
-  -webkit-align-content: flex-start;
-          align-content: flex-start;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
   margin: 0 #{-$unit} $unit*2;
-
+  &-items{
+    display: flex;
+    -webkit-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+  }
   h2{
     width: 100%;
     @include sectionHeading;
@@ -130,8 +136,8 @@ body {
 
 .featured-project{
   &-link{
-    flex: 1 1 auto;
-    width: calc( 33.33% - #{$unit*2});
+    flex: 1 1 250px;
+    width: 30%;
     min-width: 250px;
     @include media-small{
       min-width: 0;
@@ -141,15 +147,24 @@ body {
     -webkit-flex-direction: column;
         -ms-flex-direction: column;
             flex-direction: column;
+    padding: $unit;
 
-    margin: $unit;
-    background: #fff;
-    border-radius: 2px;
-    box-shadow: 0 2px 3px 0 rgba(0,0,0,0.3);
-    transition: box-shadow 0.2s;
-    &:hover{
-      box-shadow: 0 5px 10px 0 rgba(0,0,0,0.4);
+    .card{
+      flex: 1 0 auto;
+      display: flex;
+      -webkit-flex-direction: column;
+          -ms-flex-direction: column;
+              flex-direction: column;
+      border-radius: 2px;
+      box-shadow: 0 2px 3px 0 rgba(0,0,0,0.3);
+      background: #fff;
+      transition: box-shadow 0.2s;
+
+      &:hover{
+        box-shadow: 0 5px 10px 0 rgba(0,0,0,0.4);
+      }
     }
+
   }
   &-title{
     @include itemHeading;
@@ -176,7 +191,7 @@ body {
       content:'';
       width: $unit*2;
       height: 100%;
-      background: url(../../img/build/icon-external-link.svg) no-repeat 50%;
+      background: url(../img/icon-external-link.svg) no-repeat 50%;
       -webkit-background-size: contain;
            -o-background-size: contain;
               background-size: contain;
@@ -199,6 +214,7 @@ body {
 
 //---Footer
 .site-footer{
+  flex: 0 0 auto;
   padding: $unit*2 0;
   h2{
     @include sectionHeading;
@@ -238,7 +254,7 @@ body {
       content:'';
       width: $unit*2;
       height: 100%;
-      background: url(../../img/build/icon-external-link.svg) no-repeat 50%;
+      background: url(../img/icon-external-link.svg) no-repeat 50%;
       -webkit-background-size: contain;
            -o-background-size: contain;
               background-size: contain;
