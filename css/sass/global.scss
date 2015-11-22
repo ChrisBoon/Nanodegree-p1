@@ -5,7 +5,9 @@
 @import "base/_variables";
 @import "base/_typography";
 
+//putting all rules here for now as page is simple enough to not pull into separate scss files
 
+//---scaffold
 html{
     background-color: #e1e1e1;
     min-height: 100%;
@@ -25,7 +27,7 @@ body {
   flex: 1 1 auto;
 }
 
-//putting all rules here for now as page is simple enough to not pull into separate scss files
+//---header
 .site-header {
   display: flex;
   @include media-crazysmall{
@@ -50,9 +52,9 @@ body {
     height: $thisSize*0.8;
     }
     border-radius: 50%;
-    background-image: url("../../img/build/logo-joke.jpg");
+    background-image: url(../../img/build/logo-joke.jpg);
     @include retina{
-      background-image: url("../../img/build/logo-joke_x2.jpg");
+      background-image: url(../../img/build/logo-joke_x2.jpg);
     }
     background-size: 100%;
     background-position: 0 0;
@@ -99,6 +101,7 @@ body {
   }
 }
 
+//---Hero
 .hero {
   margin-bottom: $unit*2;
 }
@@ -107,6 +110,7 @@ body {
   max-width: 100%;
 }
 
+//---Content
 .featured-work {
   flex: 1 0 auto;
   display: flex;
@@ -172,7 +176,7 @@ body {
       content:'';
       width: $unit*2;
       height: 100%;
-      background: url("../../img/build/icon-external-link.svg") no-repeat 50%;
+      background: url(../../img/build/icon-external-link.svg) no-repeat 50%;
       -webkit-background-size: contain;
            -o-background-size: contain;
               background-size: contain;
@@ -193,6 +197,7 @@ body {
 
 }
 
+//---Footer
 .site-footer{
   padding: $unit*2 0;
   h2{
@@ -233,7 +238,7 @@ body {
       content:'';
       width: $unit*2;
       height: 100%;
-      background: url("../../img/build/icon-external-link.svg") no-repeat 50%;
+      background: url(../../img/build/icon-external-link.svg) no-repeat 50%;
       -webkit-background-size: contain;
            -o-background-size: contain;
               background-size: contain;
