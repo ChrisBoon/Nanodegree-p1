@@ -1,6 +1,4 @@
 .DS_store
 node_modules
-css/build
-js/build
-img/build
+build
 .sass-cache

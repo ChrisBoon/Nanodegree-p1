@@ -31,7 +31,7 @@ responsive_images: {
       expand: true,
       src: ['*.{gif,jpg,png}'],
       cwd: 'img/source/resize/half/',
-      dest: 'img/build/'
+      dest: 'build/img/'
     }]
   }
 },
@@ -42,14 +42,14 @@ responsive_images: {
                     'js/libs/*.js', // Library JS
                     'js/site/*.js'  // My JS
                 ],
-                dest: 'js/build/production.js',
+                dest: 'build/js/production.js',
             }
         },
         //minify js
         uglify: {
             build: {
-                src: 'js/build/production.js',
-                dest: 'js/build/production.min.js'
+                src: 'build/js/production.js',
+                dest: 'build/js/production.min.js'
             }
         },
         sass: {
@@ -58,7 +58,7 @@ responsive_images: {
                     style: 'expanded'
                 },
                 files: {
-                    'css/build/global.css': 'css/sass/global.scss'
+                    'build/css/global.css': 'css/sass/global.scss'
                 }
             }
         },
@@ -70,23 +70,55 @@ responsive_images: {
                 ]
             },
             dist: {
-                src: 'css/build/global.css'
+                src: 'build/css/global.css'
             }
         },
         csscomb: {
             foo: {
                  files: {
-                     'css/build/global.css': ['css/build/global.css']
+                     'build/css/global.css': ['build/css/global.css']
                  }
             }
         },
+        copy: {
+            build: {
+                src: '*.html',
+                dest: 'build/',
+            },
+            dist: {
+                files: [{
+                    expand: true,
+                    dot: true,
+                    cwd: 'build/',
+                    dest: 'dist/',
+                    src: [
+                        'css/*.css',
+                        '*.html',
+                        'img/*',
+                        'json/*',
+                        'js/*.min.js'
+                    ]
+                }]
+            }
+
+
+        },
         connect: {
-            server: {
+            build: {
                 options: {
                     port: 9001,
-                    keepalive: true
+                    keepalive: true,
+                    base: 'build'
+                }
+            },
+            dist: {
+                options: {
+                    port: 9001,
+                    keepalive: true,
+                    base: 'dist'
                 }
             }
+
         },
         watch: {
             scripts: {
@@ -114,10 +146,22 @@ responsive_images: {
     grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-postcss');
     grunt.loadNpmTasks('grunt-csscomb');
+    grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-connect');
-  grunt.loadNpmTasks('grunt-responsive-images');
+    grunt.loadNpmTasks('grunt-responsive-images');
     // 4. Where we tell Grunt what to do when we type "grunt" into the terminal.
-    grunt.registerTask('default', ['concat', 'uglify']);
+    grunt.registerTask('default', [
+        'concat',
+        'uglify',
+        'sass',
+        'postcss',
+        'csscomb',
+        'copy:build'
+    ]);
+
+    grunt.registerTask('dist', [
+        'copy:dist'
+    ]);
 
 };
